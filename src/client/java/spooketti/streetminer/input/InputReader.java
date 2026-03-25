@@ -1,6 +1,7 @@
 package spooketti.streetminer.input;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.dialog.Input;
 
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class InputReader {
     public ArrayList<InputTick> buffer = new ArrayList<>();
 
     private char lastInput = 'x';
+
+    StringBuilder sb = new StringBuilder();
 
     public void register()
     {
@@ -68,7 +71,28 @@ public class InputReader {
                 buffer.removeFirst();
             }
 
+            sb.setLength(0);
+
+            for (InputTick c : buffer)
+            {
+                sb.append(c.input);
+                sb.append("\t");
+            }
+
+            client.player.sendSystemMessage(Component.translatable(sb.toString()));
+
             lastInput = readInput;
         });
     }
+
+    /*
+    [11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+[11:31:51] [Render thread/INFO] (Minecraft) [System] [CHAT] f	x	F	x	f	x	F	x	f	x	F	x	f	x	F	x
+     */
 }
