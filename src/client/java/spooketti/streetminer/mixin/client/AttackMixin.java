@@ -1,6 +1,8 @@
 package spooketti.streetminer.mixin.client;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.projectile.arrow.SpectralArrow;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,8 +18,11 @@ public class AttackMixin {
 //	}
 
 	@Inject(at = @At("HEAD"), method="swing")
-	private void attack()
+	private void attack(CallbackInfo ci)
 	{
-		System.out.println(InputReader.buffer);
+		LocalPlayer player = (LocalPlayer) (Object) this;
+		player.addDeltaMovement(new Vec3(0,30,0));
+		System.out.println("still going!");
+
 	}
 }

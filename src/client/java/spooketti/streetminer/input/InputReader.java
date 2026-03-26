@@ -1,8 +1,10 @@
 package spooketti.streetminer.input;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.dialog.Input;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 
@@ -84,6 +86,7 @@ public class InputReader {
 
             lastInput = readInput;
         });
+
     }
 
     /*
