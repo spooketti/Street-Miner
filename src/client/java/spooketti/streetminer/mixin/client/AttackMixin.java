@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.player.LocalPlayer;
+import spooketti.streetminer.input.InputReader;
 
 @Mixin(LocalPlayer.class)
 public class AttackMixin {
@@ -17,6 +18,6 @@ public class AttackMixin {
 	@Inject(at = @At("HEAD"), method="swing")
 	private void attack()
 	{
-
+		System.out.println(InputReader.buffer);
 	}
 }

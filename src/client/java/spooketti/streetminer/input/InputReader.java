@@ -20,7 +20,7 @@ public class InputReader {
         }
     }
 
-    public ArrayList<InputTick> buffer = new ArrayList<>();
+    public static ArrayList<InputTick> buffer = new ArrayList<>();
 
     private char lastInput = 'x';
 
