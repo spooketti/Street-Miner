@@ -80,6 +80,7 @@ public class InputReader {
             }
 
             client.player.sendSystemMessage(Component.translatable(sb.toString()));
+            client.player.onAttack();
 
             lastInput = readInput;
         });
