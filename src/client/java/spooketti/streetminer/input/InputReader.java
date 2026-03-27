@@ -57,16 +57,21 @@ public class InputReader {
             if(inputToString.reverse().toString().equals(hadoukenInput))
             {
                 player.sendSystemMessage(Component.translatable("hadouken"));
-
+                buffer.clear();
+                break;
             }
 
             if(inputToString.reverse().toString().equals(tatsumakiInput))
             {
                 player.sendSystemMessage(Component.translatable("tatsumaki"));
+                buffer.clear();
+                break;
             }
             if(inputToString.reverse().toString().equals(shoryuInput))
             {
                 player.sendSystemMessage(Component.translatable("shoryuken"));
+                buffer.clear();
+                break;
             }
 
 //            player.sendSystemMessage(Component.translatable(inputToString.substring(0,1)));
