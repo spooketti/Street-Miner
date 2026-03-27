@@ -25,6 +25,7 @@ public class InputReader {
         }
     }
 
+    //these are in reverse
     private static String hadoukenInput = "fFS";
     private static String tatsumakiInput = "bBS";
     private static String shoryuInput = "FSf";
