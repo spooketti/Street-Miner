@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.player.LocalPlayer;
+import spooketti.streetminer.fighter.ryu.RyuMoveset;
 import spooketti.streetminer.input.InputReader;
 
 @Mixin(LocalPlayer.class)
@@ -21,8 +22,9 @@ public class AttackMixin {
 	private void attack(CallbackInfo ci)
 	{
 		LocalPlayer player = (LocalPlayer) (Object) this;
-		player.addDeltaMovement(new Vec3(0,30,0));
-		System.out.println("still going!");
+//		player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
+//		System.out.println("still going!");
+		InputReader.inputMatcher();
 
 	}
 }

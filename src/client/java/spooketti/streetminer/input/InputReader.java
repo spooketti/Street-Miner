@@ -1,12 +1,15 @@
 package spooketti.streetminer.input;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.dialog.Input;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class InputReader {
 
@@ -22,11 +25,57 @@ public class InputReader {
         }
     }
 
+    private static String hadoukenInput = "SFf";
+    private static String tatsumakiInput = "SBb";
+    private static String shoryuInput = "fSF";
+    private static LocalPlayer player;
+
+    public enum inputType
+    {
+
+    }
+
+    StringBuilder sb = new StringBuilder();
+
+    public static void inputMatcher()
+    {
+        StringBuilder inputToString = new StringBuilder();
+        List<InputTick> read = buffer.reversed();
+        int totalTime = 0;
+        for(int i=0;i<read.size();i++)
+        {
+            totalTime += read.get(i).tick;
+            if(read.get(i).input == 'x')
+            {
+                continue;
+            }
+
+            inputToString.append(read.get(i).input);
+            /*
+            if(hasSuper)
+             */
+            if(inputToString.reverse().toString().equals(hadoukenInput))
+            {
+                player.sendSystemMessage(Component.translatable("hadouken"));
+
+            }
+
+            if(inputToString.reverse().toString().equals(tatsumakiInput))
+            {
+                player.sendSystemMessage(Component.translatable("tatsumaki"));
+            }
+            if(inputToString.reverse().toString().equals(shoryuInput))
+            {
+                player.sendSystemMessage(Component.translatable("shoryuken"));
+            }
+
+//            player.sendSystemMessage(Component.translatable(inputToString.substring(0,1)));
+        }
+    }
+
     public static ArrayList<InputTick> buffer = new ArrayList<>();
 
     private char lastInput = 'x';
-
-    StringBuilder sb = new StringBuilder();
 
     public void register()
     {
@@ -35,6 +84,7 @@ public class InputReader {
             {
                 return;
             }
+            player = client.player;
             var input = client.player.input;
             char readInput = 'x';
 
@@ -44,7 +94,7 @@ public class InputReader {
             S = down
             b = back
             F = forward down diagonal
-            S = back down diagonal
+            B = back down diagonal
              */
             boolean onlyDown = input.keyPresses.shift() && !(input.keyPresses.forward() || input.keyPresses.backward());
 
@@ -58,7 +108,12 @@ public class InputReader {
                 readInput = 'b';
             }
 
-            if(input.keyPresses.shift() && !onlyDown)
+            if(onlyDown)
+            {
+                readInput = 's';
+            }
+
+            if(input.keyPresses.shift())
             {
                 readInput = Character.toUpperCase(readInput);
             }
@@ -78,11 +133,10 @@ public class InputReader {
             for (InputTick c : buffer)
             {
                 sb.append(c.input);
-                sb.append("\t");
             }
 
-            client.player.sendSystemMessage(Component.translatable(sb.toString()));
-            client.player.onAttack();
+            client.player.sendSystemMessage(Component.translatable(sb.reverse().toString()));
+//            client.player.onAttack();
 
             lastInput = readInput;
         });
