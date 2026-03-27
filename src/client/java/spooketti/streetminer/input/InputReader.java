@@ -26,7 +26,7 @@ public class InputReader {
     }
 
     private static String hadoukenInput = "SFf";
-    private static String tatsumakiInput = "SBb";
+    private static String tatsumakiInput = "bBS";
     private static String shoryuInput = "fSF";
     private static LocalPlayer player;
 
@@ -73,9 +73,9 @@ public class InputReader {
                 buffer.clear();
                 break;
             }
-
-//            player.sendSystemMessage(Component.translatable(inputToString.substring(0,1)));
+            player.sendSystemMessage(Component.translatable(inputToString.reverse().toString()));
         }
+        // player.sendSystemMessage(Component.translatable(inputToString.substring(0,4)));
     }
 
     public static ArrayList<InputTick> buffer = new ArrayList<>();
@@ -140,7 +140,7 @@ public class InputReader {
                 sb.append(c.input);
             }
 
-            client.player.sendSystemMessage(Component.translatable(sb.reverse().toString()));
+//            client.player.sendSystemMessage(Component.translatable(sb.reverse().toString()));
 //            client.player.onAttack();
 
             lastInput = readInput;
