@@ -35,47 +35,46 @@ public class InputReader {
 
     }
 
-    StringBuilder sb = new StringBuilder();
+    static StringBuilder sb = new StringBuilder();
 
     public static void inputMatcher()
     {
-        StringBuilder inputToString = new StringBuilder();
-        List<InputTick> read = buffer.reversed();
+        sb.setLength(0);
         int totalTime = 0;
-        for(int i=0;i<read.size();i++)
+        for(int i=0;i<buffer.size();i++)
         {
-            totalTime += read.get(i).tick;
-            if(read.get(i).input == 'x')
+            totalTime += buffer.get(i).tick;
+            if(buffer.get(i).input == 'x')
             {
                 continue;
             }
 
-            inputToString.append(read.get(i).input);
+            sb.append(buffer.get(i).input);
             /*
             if(hasSuper)
              */
 
-            if(inputToString.toString().equals(hadoukenInput))
+            if(sb.toString().equals(hadoukenInput))
             {
                 player.sendSystemMessage(Component.translatable("hadouken"));
                 buffer.clear();
                 break;
             }
 
-            if(inputToString.toString().equals(tatsumakiInput))
+            if(sb.toString().equals(tatsumakiInput))
             {
                 player.sendSystemMessage(Component.translatable("tatsumaki"));
                 buffer.clear();
                 break;
             }
 
-            if(inputToString.toString().equals(shoryuInput))
+            if(sb.toString().equals(shoryuInput))
             {
                 player.sendSystemMessage(Component.translatable("shoryuken"));
                 buffer.clear();
                 break;
             }
-            player.sendSystemMessage(Component.translatable(inputToString.toString()));
+            player.sendSystemMessage(Component.translatable(sb.toString()));
         }
         // player.sendSystemMessage(Component.translatable(inputToString.substring(0,4)));
     }
@@ -127,7 +126,7 @@ public class InputReader {
 
             if(lastInput != readInput)
             {
-                buffer.add(new InputTick(readInput, client.player.tickCount));
+                buffer.addFirst(new InputTick(readInput, client.player.tickCount));
             }
 
             if(buffer.size() > 20)
@@ -135,12 +134,12 @@ public class InputReader {
                 buffer.removeFirst();
             }
 
-            sb.setLength(0);
-
-            for (InputTick c : buffer)
-            {
-                sb.append(c.input);
-            }
+//            sb.setLength(0);
+//
+//            for (InputTick c : buffer)
+//            {
+//                sb.append(c.input);
+//            }
 
 //            client.player.sendSystemMessage(Component.translatable(sb.reverse().toString()));
 //            client.player.onAttack();
