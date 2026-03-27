@@ -132,7 +132,7 @@ public class InputReader {
 
             if(buffer.size() > 20)
             {
-                buffer.removeFirst();
+                buffer.removeLast();
             }
 
 //            sb.setLength(0);
