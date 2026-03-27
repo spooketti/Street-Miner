@@ -29,6 +29,7 @@ public class InputReader {
     private static String hadoukenInput = "fFS";
     private static String tatsumakiInput = "bBS";
     private static String shoryuInput = "FSf";
+    private static String shakuInput = "fFSBb";
     private static LocalPlayer player;
 
     public enum inputType
