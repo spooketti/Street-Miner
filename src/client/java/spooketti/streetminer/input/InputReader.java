@@ -25,9 +25,9 @@ public class InputReader {
         }
     }
 
-    private static String hadoukenInput = "SFf";
+    private static String hadoukenInput = "fFS";
     private static String tatsumakiInput = "bBS";
-    private static String shoryuInput = "fSF";
+    private static String shoryuInput = "FSf";
     private static LocalPlayer player;
 
     public enum inputType
@@ -54,26 +54,28 @@ public class InputReader {
             /*
             if(hasSuper)
              */
-            if(inputToString.reverse().toString().equals(hadoukenInput))
+
+            if(inputToString.toString().equals(hadoukenInput))
             {
                 player.sendSystemMessage(Component.translatable("hadouken"));
                 buffer.clear();
                 break;
             }
 
-            if(inputToString.reverse().toString().equals(tatsumakiInput))
+            if(inputToString.toString().equals(tatsumakiInput))
             {
                 player.sendSystemMessage(Component.translatable("tatsumaki"));
                 buffer.clear();
                 break;
             }
-            if(inputToString.reverse().toString().equals(shoryuInput))
+
+            if(inputToString.toString().equals(shoryuInput))
             {
                 player.sendSystemMessage(Component.translatable("shoryuken"));
                 buffer.clear();
                 break;
             }
-            player.sendSystemMessage(Component.translatable(inputToString.reverse().toString()));
+            player.sendSystemMessage(Component.translatable(inputToString.toString()));
         }
         // player.sendSystemMessage(Component.translatable(inputToString.substring(0,4)));
     }
