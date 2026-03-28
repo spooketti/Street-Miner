@@ -9,7 +9,7 @@ public class RyuMoveset implements MovesetBase {
     {
         LIGHT(new Vec3(0,0.5,0),2),
         MEDIUM(new Vec3(0,0.5,0),4),
-        HEAVY(new Vec3(0,1,0),6);
+        HEAVY(new Vec3(0,0.75,0),6);
 
         public final Vec3 momentum;
         public final int damage;
