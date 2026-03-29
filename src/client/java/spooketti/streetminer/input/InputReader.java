@@ -6,6 +6,7 @@ import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.dialog.Input;
 import net.minecraft.world.phys.Vec3;
+import spooketti.streetminer.audio.AudioRegister;
 import spooketti.streetminer.fighter.ryu.RyuMoveset;
 
 import java.util.ArrayList;
@@ -74,6 +75,7 @@ public class InputReader {
             if(sb.toString().equals(shoryuInput))
             {
                 player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
+                player.playSound(AudioRegister.RYU.SHORYUKEN_HEAVY);
                 buffer.clear();
                 break;
             }

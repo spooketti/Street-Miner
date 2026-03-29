@@ -22,7 +22,7 @@ public class AttackMixin {
 	private void attack(CallbackInfo ci)
 	{
 		LocalPlayer player = (LocalPlayer) (Object) this;
-		player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
+//		player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
 //		System.out.println("still going!")
 		InputReader.inputMatcher();
 

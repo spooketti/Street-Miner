@@ -13,15 +13,14 @@ public class AudioRegister {
 
     public class RYU
     {
-        public static final SoundEvent SHORYUKEN_LIGHT = registerSound("shoryuken_light");
-        public static final SoundEvent SHORYUKEN_HEAVY = registerSound("shoryuken_heavy");
+        public static SoundEvent SHORYUKEN_LIGHT;
+        public static SoundEvent SHORYUKEN_HEAVY;
     }
 
     public class TERRY
     {
 
     }
-
 
     // actual registration of all the custom SoundEvents
     private static SoundEvent registerSound(String id) {
@@ -32,6 +31,8 @@ public class AudioRegister {
     // This static method starts class initialization, which then initializes
     // the static class variables (e.g. ITEM_METAL_WHISTLE).
     public static void initialize() {
+        RYU.SHORYUKEN_LIGHT = registerSound("shoryuken_light");
+        RYU.SHORYUKEN_HEAVY = registerSound("shoryuken_heavy");
         Streetminer.LOGGER.info("Registering " + Streetminer.MOD_ID + " Sounds");
         // Technically this method can stay empty, but some developers like to notify
         // the console, that certain parts of the mod have been successfully initialized
