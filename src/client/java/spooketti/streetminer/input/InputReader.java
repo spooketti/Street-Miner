@@ -6,6 +6,7 @@ import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.dialog.Input;
 import net.minecraft.world.phys.Vec3;
+import spooketti.streetminer.fighter.ryu.RyuMoveset;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,11 +73,11 @@ public class InputReader {
 
             if(sb.toString().equals(shoryuInput))
             {
-                player.sendSystemMessage(Component.translatable("shoryuken"));
+                player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
                 buffer.clear();
                 break;
             }
-            player.sendSystemMessage(Component.translatable(sb.toString()));
+//            player.sendSystemMessage(Component.translatable(sb.toString()));
         }
         // player.sendSystemMessage(Component.translatable(inputToString.substring(0,4)));
     }
@@ -125,6 +126,8 @@ public class InputReader {
             {
                 readInput = Character.toUpperCase(readInput);
             }
+
+//            client.options.keyAttack.isDown();
 
             if(lastInput != readInput)
             {

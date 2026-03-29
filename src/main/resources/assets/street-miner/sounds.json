@@ -1,0 +1,10 @@
+{
+  "shoryuken_heavy": {
+    "subtitle": "sound.street-miner.shoryuken_heavy",
+    "sounds": ["street-miner:shoryuken_heavy"]
+  },
+  "shoryuken_light": {
+    "subtitle": "sound.street-miner.shoryuken_light",
+    "sounds": ["street-miner:shoryuken_light"]
+  }
+}

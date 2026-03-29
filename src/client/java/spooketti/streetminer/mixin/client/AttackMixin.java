@@ -23,7 +23,7 @@ public class AttackMixin {
 	{
 		LocalPlayer player = (LocalPlayer) (Object) this;
 		player.addDeltaMovement(RyuMoveset.Shoryu.HEAVY.momentum);
-//		System.out.println("still going!");
+//		System.out.println("still going!")
 		InputReader.inputMatcher();
 
 	}
